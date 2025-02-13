@@ -13,7 +13,7 @@ interface AppContextType {
   users: Users[];
   loading: boolean;
   fetchUsers: () => Promise<void>;
-  addUser: (user: Users) => Promise<void>;
+  addUser: (user: Partial<Users>) => Promise<void>;
   deleteUser: (id: string) => Promise<void>;
   editUser: (id: string, updatedData: Partial<Users>) => Promise<void>; // Add editUser
 }
@@ -40,7 +40,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }
 
   // Add user
-  async function addUser(user: Users) {
+  async function addUser(user: Partial<Users>) {
     try {
       const res = await fetch(usersAPI, {
         method: "POST",

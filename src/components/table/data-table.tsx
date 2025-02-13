@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { AddUserDialog } from "../dialog/AddUserDialog";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -62,7 +63,7 @@ export function DataTable<TData, TValue>({
           }
           className="max-w-sm"
         />
-        <Button>Add User</Button>
+        <AddUserDialog />
       </div>
 
       <div className="rounded-md border">

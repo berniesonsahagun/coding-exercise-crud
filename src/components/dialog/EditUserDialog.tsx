@@ -29,7 +29,7 @@ export function EditUserDialog({ user }: { user: Users }) {
 
     toast({
       title: "User Edited",
-      description: "User sucessfully edited",
+      description: `${name} is sucessfully edited`,
     });
   }
 
