@@ -1,51 +1,38 @@
-import { Button } from "@/components/ui/button";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
+import { Users } from "@/types";
+import Image from "next/image";
 
-export function DeleteUserDialog() {
-  function handleDelete() {
-    console.log("User deleted!");
-  }
+export function ViewUserDialog({ user }: { user: Users }) {
+  const { name, address, avatar, occupation } = user;
 
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <DropdownMenuItem
-          className="text-red-700 focus:text-red-700"
-          onSelect={(e) => e.preventDefault()}
-        >
-          Delete user
+        <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
+          View User
         </DropdownMenuItem>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Delete user</DialogTitle>
-          <DialogDescription>
-            Are you sure you want to delete this user?
-          </DialogDescription>
+          <DialogTitle>View User</DialogTitle>
+          <DialogDescription></DialogDescription>
         </DialogHeader>
-
-        <DialogFooter>
-          <DialogClose asChild>
-            <Button type="button" variant="secondary">
-              Cancel
-            </Button>
-          </DialogClose>
-          <form action={handleDelete}>
-            <Button type="submit" variant="destructive">
-              Delete User
-            </Button>
-          </form>
-        </DialogFooter>
+        <div className="grid gap-2 py-4">
+          <div className="relative w-full h-[300px]">
+            <Image src={avatar} fill alt="Avatar" />
+          </div>
+          <h2 className="font-bold text-2xl">{name}</h2>
+          <p className="text-zinc-500">{address}</p>
+          <p>{occupation}</p>
+        </div>
       </DialogContent>
     </Dialog>
   );

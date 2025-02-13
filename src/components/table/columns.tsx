@@ -3,7 +3,6 @@
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
@@ -14,6 +13,7 @@ import { ArrowUpDown, MoreHorizontal } from "lucide-react";
 import { EditUserDialog } from "@/components/dialog/EditUserDialog";
 import { DeleteUserDialog } from "@/components/dialog/DeleteUserDialog";
 import { Users } from "@/types";
+import { ViewUserDialog } from "../dialog/ViewUserDialog";
 
 export const columns: ColumnDef<Users>[] = [
   {
@@ -75,11 +75,7 @@ export const columns: ColumnDef<Users>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(selectedUser.id)}
-            >
-              View Profile
-            </DropdownMenuItem>
+            <ViewUserDialog user={selectedUser} />
             <DropdownMenuSeparator />
             <EditUserDialog user={selectedUser} />
             <DeleteUserDialog id={selectedUser.id} />
